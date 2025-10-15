@@ -5,10 +5,10 @@ Hello, thanks for checking out krabbypatty password generator.  This is a simple
 You can get petfacts by installing it through cargo `cargo install petfacts`.
 
 ## krabbypatty usage
-* -e --exclude-chars <EXCLUDE_CHARS> Comma seperated characters you wish to exclude from generation "&, $, @"
-* -l --length <LENGTH> Set the password genration length defaults to 16 characters [default: 16]
-* -h --help Print Help
-* -v --version Print Version
+* `-e --exclude-chars <EXCLUDE_CHARS>` Comma seperated characters you wish to exclude from generation "&, $, @"
+* `-l --length <LENGTH>` Set the password genration length defaults to 16 characters [default: 16]
+* `-h --help` Print Help
+* `-v --version` Print Version
 
 ## Example
 `krabbypatty` - Generates a secure random password.
