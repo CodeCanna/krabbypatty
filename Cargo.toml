@@ -1,5 +1,13 @@
 [package]
 name = "krabbypatty"
+description = "A CLI secure password generator."
+documentation = "https://github.com/CodeCanna/krabbypatty"
+readme = "README.md"
+repository = "https://github.com/CodeCanna/krabbypatty"
+homepage = "https://github.com/CodeCanna/krabbypatty"
+keywords = ["cli", "password", "generator", "password generator"]
+categories = ["command-line-utilities"]
+license = "LICENSE"
 version = "0.1.0"
 edition = "2024"
 
