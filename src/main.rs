@@ -22,9 +22,7 @@ fn sanitize_password(password: String, chars: Vec<char>) -> String {
     for mut c in password.chars() {
         for ch in chars.clone() {
             if c == ch {
-                println!("Excluded char: {}", &c);
                 c = char::from_u32(random_ascii() as u32).unwrap(); // Set character to a new value
-                println!("Replaced with: {}", &c);
             }
         }
         sanitized_string.push(c);
