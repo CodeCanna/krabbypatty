@@ -7,7 +7,7 @@ repository = "https://github.com/CodeCanna/krabbypatty"
 homepage = "https://github.com/CodeCanna/krabbypatty"
 keywords = ["cli", "password", "generator", "password generator"]
 categories = ["command-line-utilities"]
-license = "LICENSE"
+license-file = "LICENSE"
 version = "0.1.0"
 edition = "2024"
 
