@@ -60,8 +60,7 @@ fn main() {
 
     // Now it needs to sanitized of any characters that the user doesn't want generated,
     if let Some(exclude_chars) = args.exclude_chars.as_deref() {
-        password =
-            sanitize_password(password, parse_exclude_chars(String::from(exclude_chars)));
+        password = sanitize_password(password, parse_exclude_chars(String::from(exclude_chars)));
     }
     println!("{}", password);
 }
@@ -90,10 +89,8 @@ mod tests {
 
     #[test]
     fn random_ascii_test() {
-        let test_val: u8 = 10;
-        assert_eq!(
-            std::any::type_name_of_val(&random_ascii()),
-            std::any::type_name_of_val(&test_val)
-        );
+        let val = random_ascii();
+        assert!(val.is_ascii());
+        assert!(val.is_ascii_graphic() || val == b' ');
     }
 }
