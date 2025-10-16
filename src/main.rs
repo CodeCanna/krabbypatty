@@ -43,9 +43,9 @@ fn parse_exclude_chars(ec: String) -> Vec<char> {
 }
 
 /// Generate a random printable ascii character code
-fn random_ascii() -> u8 {
+fn random_ascii() -> u32 {
     let mut rng = StdRng::from_rng(&mut rand::rng());
-    rng.random_range(32..127) as u8
+    rng.random_range(32..127)
 }
 
 fn main() {
@@ -54,7 +54,7 @@ fn main() {
 
     // Generate the password
     for _ in 0..args.length {
-        let random_byte = random_ascii() as u32;
+        let random_byte = random_ascii();
         password.push(char::from_u32(random_byte).unwrap());
     }
 
