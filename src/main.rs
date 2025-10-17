@@ -89,7 +89,7 @@ mod tests {
 
     #[test]
     fn random_ascii_test() {
-        let val = random_ascii();
+        let val = random_ascii() as u8;
         assert!(val.is_ascii());
         assert!(val.is_ascii_graphic() || val == b' ');
     }
