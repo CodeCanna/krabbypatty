@@ -22,7 +22,7 @@ fn sanitize_password(password: String, chars: Vec<char>) -> String {
     for mut c in password.chars() {
         for ch in chars.clone() {
             if c == ch {
-                c = char::from_u32(random_ascii() as u32).unwrap(); // Set character to a new value
+                c = char::from_u32(random_ascii()).unwrap(); // Set character to a new value
             }
         }
         sanitized_string.push(c);
@@ -44,8 +44,7 @@ fn parse_exclude_chars(ec: String) -> Vec<char> {
 
 /// Generate a random printable ascii character code
 fn random_ascii() -> u32 {
-    let mut rng = StdRng::from_rng(&mut rand::rng());
-    rng.random_range(32..127)
+    StdRng::from_rng(&mut rand::rng()).random_range(32..127)
 }
 
 fn main() {
@@ -54,8 +53,7 @@ fn main() {
 
     // Generate the password
     for _ in 0..args.length {
-        let random_byte = random_ascii();
-        password.push(char::from_u32(random_byte).unwrap());
+        password.push(char::from_u32(random_ascii()).unwrap());
     }
 
     // Now it needs to sanitized of any characters that the user doesn't want generated,
