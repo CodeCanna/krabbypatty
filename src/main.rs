@@ -44,7 +44,7 @@ fn parse_exclude_chars(ec: String) -> Vec<char> {
 
 /// Generate a random printable ascii character code
 fn random_ascii() -> u32 {
-    StdRng::from_rng(&mut rand::rng()).random_range(32..127)
+    StdRng::from_rng(&mut rand::rng()).random_range(32..126) // Only go to 126 because 127 is the DEL character
 }
 
 fn main() {
