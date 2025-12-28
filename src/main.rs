@@ -1,7 +1,6 @@
 use clap::Parser;
-use rand::Rng;
-use rand::prelude::*;
 use rand::rngs::StdRng;
+use rand::{Rng, SeedableRng};
 
 /// krabbypatty password generator, securely generate passwords
 #[derive(Parser, Debug)]
@@ -20,10 +19,11 @@ struct Args {
 fn sanitize_password(password: String, chars: Vec<char>) -> String {
     let mut sanitized_string = String::default();
     for mut c in password.chars() {
-        for ch in chars.clone() {
-            if c == ch {
-                c = char::from_u32(random_ascii()).unwrap(); // Set character to a new value
-            }
+        // Generate a new character until it's a different character from the exclude character
+        while chars.contains(&c) {
+            println!("Regenerating character: {}", c);
+            c = char::from_u32(random_ascii()).unwrap();
+            println!("New Character: {}", c);
         }
         sanitized_string.push(c);
     }
@@ -32,11 +32,9 @@ fn sanitize_password(password: String, chars: Vec<char>) -> String {
 
 /// Parse the passed string of comma seperated characters
 fn parse_exclude_chars(ec: String) -> Vec<char> {
+    let ec = ec.replace(" ", "");
     let mut char_arr = vec![];
     for c in ec.chars() {
-        if c == ',' || c == ' ' {
-            continue;
-        }
         char_arr.push(c);
     }
     char_arr
@@ -71,7 +69,6 @@ mod tests {
     fn sanitize_password_test() {
         let dirty_string = "abc123$*(";
         let sanitized_string = sanitize_password(String::from(dirty_string), vec!['$', '*', '(']);
-
         assert!(!sanitized_string.contains('$'));
         assert!(!sanitized_string.contains('*'));
         assert!(!sanitized_string.contains('('));
