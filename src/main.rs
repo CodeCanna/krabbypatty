@@ -77,7 +77,7 @@ mod tests {
     #[test]
     fn parse_exclude_chars_test() {
         let exclude_test_chars = vec!['*', ')', '@'];
-        let exclude_chars = String::from("*, ), @");
+        let exclude_chars = String::from("* ) @");
 
         assert_eq!(exclude_test_chars, parse_exclude_chars(exclude_chars));
     }
