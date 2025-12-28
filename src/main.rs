@@ -21,9 +21,7 @@ fn sanitize_password(password: String, chars: Vec<char>) -> String {
     for mut c in password.chars() {
         // Generate a new character until it's a different character from the exclude character
         while chars.contains(&c) {
-            println!("Regenerating character: {}", c);
             c = char::from_u32(random_ascii()).unwrap();
-            println!("New Character: {}", c);
         }
         sanitized_string.push(c);
     }
