@@ -28,16 +28,6 @@ fn sanitize_password(password: String, exclude_chars: String) -> String {
     sanitized_string
 }
 
-/// Parse the passed string of comma seperated characters
-fn parse_exclude_chars(ec: String) -> Vec<char> {
-    let ec = ec.replace(" ", "");
-    let mut char_arr = vec![];
-    for c in ec.chars() {
-        char_arr.push(c);
-    }
-    char_arr
-}
-
 /// Generate a random printable ascii character code
 fn random_ascii() -> u32 {
     StdRng::from_rng(&mut rand::rng()).random_range(32..126) // Only go to 126 because 127 is the DEL character
@@ -73,14 +63,6 @@ mod tests {
         assert!(!sanitized_string.contains('$'));
         assert!(!sanitized_string.contains('*'));
         assert!(!sanitized_string.contains('('));
-    }
-
-    #[test]
-    fn parse_exclude_chars_test() {
-        let exclude_test_chars = vec!['*', ')', '@'];
-        let exclude_chars = String::from("* ) @");
-
-        assert_eq!(exclude_test_chars, parse_exclude_chars(exclude_chars));
     }
 
     #[test]
