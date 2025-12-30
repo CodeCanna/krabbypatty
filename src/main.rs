@@ -49,6 +49,11 @@ fn generate_password(length: u8, exclude_chars: Option<String>) -> String {
 
 fn main() {
     let args = Args::parse();
+
+    // Make sure password length does not excede 16 characters
+    if args.length > 16 {
+        return println!("Password length exceded, length must be 16 characters or less.");
+    }
     println!("{}", generate_password(args.length, args.exclude_chars));
 }
 
